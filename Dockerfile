@@ -48,17 +48,17 @@ RUN apt install ros-humble-turtlebot3-msgs -y
 RUN apt install ros-humble-dynamixel-sdk -y
 RUN apt install libudev-dev -y
 
-RUN mkdir -p ~/turtlebot3_ws/src && cd ~/turtlebot3_ws/src
-RUN git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git
-RUN git clone -b humble https://github.com/ROBOTIS-GIT/ld08_driver.git
-RUN cd ~/turtlebot3_ws/src/turtlebot3
-RUN rm -r turtlebot3_cartographer turtlebot3_navigation2
-RUN cd ~/turtlebot3_ws/
-RUN echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
-RUN source ~/.bashrc
-RUN colcon build --symlink-install
-RUN echo 'source ~/turtlebot3_ws/install/setup.bash' >> ~/.bashrc
-RUN source ~/.bashrc
+RUN mkdir -p ~/turtlebot3_ws/src && cd ~/turtlebot3_ws/src \
+    git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git ~/turtlebot3_ws/src/turtlebot3 \
+    git clone -b humble https://github.com/ROBOTIS-GIT/ld08_driver.git ~/turtlebot3_ws/src/ld08_driver \
+    cd ~/turtlebot3_ws/src/turtlebot3 \
+    rm -r turtlebot3_cartographer turtlebot3_navigation2 \
+    cd ~/turtlebot3_ws/ \
+    echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc \
+    source ~/.bashrc \
+    colcon build --symlink-install \
+    echo 'source ~/turtlebot3_ws/install/setup.bash' >> ~/.bashrc \
+    source ~/.bashrc 
 
 RUN cp `ros2 pkg prefix turtlebot3_bringup`/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules /etc/udev/rules.d/
 RUN udevadm control --reload-rules

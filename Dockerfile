@@ -55,12 +55,14 @@ RUN mkdir -p ~/turtlebot3_ws/src && cd ~/turtlebot3_ws/src \
     rm -r turtlebot3_cartographer turtlebot3_navigation2 \
     cd ~/turtlebot3_ws/ \
     echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc \
-    source ~/.bashrc \
-    colcon build --symlink-install \
-    echo 'source ~/turtlebot3_ws/install/setup.bash' >> ~/.bashrc \
-    source ~/.bashrc 
+    source ~/.bashrc
 
-RUN cp `ros2 pkg prefix turtlebot3_bringup`/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules /etc/udev/rules.d/
+RUN colcon build --symlink-install
+
+RUN echo 'source ~/turtlebot3_ws/install/setup.bash' >> ~/.bashrc \
+    source ~/.bashrc \
+    cp `ros2 pkg prefix turtlebot3_bringup`/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules /etc/udev/rules.d/
+
 RUN udevadm control --reload-rules
 RUN udevadm trigger
 

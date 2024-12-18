@@ -67,8 +67,8 @@ RUN service udev start
 RUN . ~/turtlebot3_ws/install/setup.sh && \
     cp `ros2 pkg prefix turtlebot3_bringup`/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules /etc/udev/rules.d/
 
-RUN udevadm control --reload-rules
-RUN udevadm trigger
+USER root
+RUN /lib/systemd/systemd-udevd --daemon && udevadm control --reload-rules && udevadm trigger
 
 ENV ROS_DOMAIN_ID=30
 ENV LDS_MODEL=LDS-02

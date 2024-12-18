@@ -72,10 +72,10 @@ ENV LDS_MODEL=LDS-01
 ENV TURTLEBOT3_MODEL=burger
 
 RUN touch /entrypoint.sh && \
-    echo "cd ~/turtlebot3_ws" && \
+    echo "cd ~/turtlebot3_ws" >> /entrypoint.sh && \
     echo "source /opt/ros/humble/setup.bash" >> /entrypoint.sh && \
     echo "source install/setup.bash" >> /entrypoint.sh && \
-    echo "ros2 launch turtlebot3_bringup robot.launch.py"
+    echo "ros2 launch turtlebot3_bringup robot.launch.py" >> /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
 

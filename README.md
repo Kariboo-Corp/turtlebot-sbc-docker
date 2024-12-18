@@ -9,6 +9,6 @@ cd turtlebot-sbc-docker
 chmod +x bringup_turtlebot.sh
 chmod +x sbc_init.bash
 
-./sbc_init.bash # may require sudo
+./sbc_init.bash # may require sudo, run once !
 ./bringup_turtlebot.sh
 ```

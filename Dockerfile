@@ -55,6 +55,8 @@ RUN mkdir -p ~/turtlebot3_ws/src && cd ~/turtlebot3_ws/src \
     rm -r turtlebot3_cartographer turtlebot3_navigation2 \
     cd ~/turtlebot3_ws/
 
+RUN rm -rf /usr/src/gmock /usr/src/gtest
+
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
     colcon build \
         --symlink-install \

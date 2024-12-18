@@ -53,11 +53,11 @@ RUN mkdir -p ~/turtlebot3_ws/src && cd ~/turtlebot3_ws/src \
     git clone -b humble https://github.com/ROBOTIS-GIT/ld08_driver.git ~/turtlebot3_ws/src/ld08_driver \
     cd ~/turtlebot3_ws/src/turtlebot3 \
     rm -r turtlebot3_cartographer turtlebot3_navigation2 \
-    cd ~/turtlebot3_ws/
 
 RUN rm -rf /usr/src/gmock /usr/src/gtest
 
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
+    cd ~/turtlebot3_ws/ \
     colcon build \
         --symlink-install \
         --cmake-clean-cache

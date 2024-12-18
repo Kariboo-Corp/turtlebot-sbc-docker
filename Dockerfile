@@ -68,6 +68,7 @@ RUN . ~/turtlebot3_ws/install/setup.sh && \
     cp `ros2 pkg prefix turtlebot3_bringup`/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules /etc/udev/rules.d/
 
 ENV ROS_DOMAIN_ID=30
-ENV LDS_MODEL=LDS-02
+ENV LDS_MODEL=LDS-01
 ENV TURTLEBOT3_MODEL=burger
 
+CMD [ "ros2", "launch", "turtlebot3_bringup", "robot.launch.py" ]

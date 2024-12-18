@@ -57,7 +57,8 @@ RUN mkdir -p ~/turtlebot3_ws/src && cd ~/turtlebot3_ws/src \
 
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
     colcon build \
-        --symlink-install
+        --symlink-install \
+        --cmake-clean-cache
 
 RUN . ~/turtlebot3_ws/install/setup.sh \
     cp `ros2 pkg prefix turtlebot3_bringup`/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules /etc/udev/rules.d/

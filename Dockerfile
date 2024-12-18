@@ -71,4 +71,3 @@ ENV ROS_DOMAIN_ID=30
 ENV LDS_MODEL=LDS-02
 ENV TURTLEBOT3_MODEL=burger
 
-CMD [ "ros2", "launch", "turtlebot3_bringup", "robot.launch.py" ]

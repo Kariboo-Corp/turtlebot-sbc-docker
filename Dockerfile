@@ -61,14 +61,16 @@ RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
     colcon build \
         --symlink-install
 
+RUN apt -y install udev
+
 RUN . ~/turtlebot3_ws/install/setup.sh && \
     cp `ros2 pkg prefix turtlebot3_bringup`/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules /etc/udev/rules.d/
 
 RUN udevadm control --reload-rules
 RUN udevadm trigger
 
-ENV ROS_DOMAIN_ID 30
-ENV LDS_MODEL LDS-02
-ENV TURTLEBOT3_MODEL burger
+ENV ROS_DOMAIN_ID=30
+ENV LDS_MODEL=LDS-02
+ENV TURTLEBOT3_MODEL=burger
 
 CMD [ "ros2", "launch", "turtlebot3_bringup", "robot.launch.py" ]

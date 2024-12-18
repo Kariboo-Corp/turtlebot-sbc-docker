@@ -62,6 +62,7 @@ RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
         --symlink-install
 
 RUN apt -y install udev
+RUN service udev start
 
 RUN . ~/turtlebot3_ws/install/setup.sh && \
     cp `ros2 pkg prefix turtlebot3_bringup`/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules /etc/udev/rules.d/
